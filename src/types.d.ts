@@ -20,9 +20,9 @@ type UserResponseType = {
     avatar: string
 }
 
-type UserDataType = DataType<UserType[]>
+type CamelCaseResponseDataType = CamelCaseResponseDataType<CamelCaseResponseUserType[]>
 
-type DataType<T> = {
+type CamelCaseResponseDataType<T> = {
     page: number
     perPage: number
     total: number
@@ -34,7 +34,7 @@ type DataType<T> = {
     }
 }
 
-type UserType = {
+type CamelCaseResponseUserType = {
     id: number
     email: string
     firstName: string

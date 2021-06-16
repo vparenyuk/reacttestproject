@@ -25,7 +25,7 @@ export const UserList: React.FC<UserListProps> = ({title}) => {
 
     const classes = useStyles();
 
-    const {isLoading, data} = useQuery<UserDataType>("userList", getAllUsers);
+    const {isLoading, data} = useQuery<CamelCaseResponseDataType>("userList", getAllUsers);
 
     if (isLoading) {
         return (
@@ -33,7 +33,7 @@ export const UserList: React.FC<UserListProps> = ({title}) => {
         );
     }
 
-    const userList = data?.data?.map(({firstName, lastName, id}: UserType) => {
+    const userList = data?.data?.map(({firstName, lastName, id}: CamelCaseResponseUserType) => {
         return (
             <div key={id}>
                 <li className={classes.item}>{firstName} {lastName}</li>
