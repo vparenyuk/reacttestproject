@@ -1,7 +1,6 @@
 import React from 'react';
 import {useQuery} from "react-query";
-import {reactTestProjectAPI} from "../common/api/api";
-import {ResponseDataType, UserType} from "../common/types/types";
+import {getAllUsers} from '../common/api/api';
 import {makeStyles} from '@material-ui/styles';
 
 type UserListProps = {
@@ -26,7 +25,7 @@ export const UserList: React.FC<UserListProps> = ({title}) => {
 
     const classes = useStyles();
 
-    const { isLoading, data} = useQuery<ResponseDataType>("userList", reactTestProjectAPI.getAllUsers);
+    const {isLoading, data} = useQuery<ResponseDataType>("userList", getAllUsers);
 
     if (isLoading) {
         return (
@@ -34,11 +33,10 @@ export const UserList: React.FC<UserListProps> = ({title}) => {
         );
     }
 
-    const userList = data?.data.map(({first_name, last_name, id}: UserType) => {
-
+    const userList = data?.data?.map(({firstName, lastName, id}: UserType) => {
         return (
             <div key={id}>
-                <li className={classes.item}>{first_name} {last_name}</li>
+                <li className={classes.item}>{firstName} {lastName}</li>
             </div>
         )
     })

@@ -1,19 +1,18 @@
-export type ResponseDataType = {
+type ResponseDataType = {
     page: number
-    per_page: number
+    perPage: number
     total: number
-    total_pages: number
+    totalPages: number
     data: Array<UserType>
     support: {
         url: string
         text: string
     }
 }
-
-export type UserType = {
+type UserType = {
     id: number
     email: string
-    first_name: string
-    last_name: string
+    firstName: string
+    lastName: string
     avatar: string
 }
