@@ -5,7 +5,7 @@ import {UserList} from "./features/UserList";
 function App() {
   return (
     <div>
-      <UserList title={'Users List App'} />
+      <UserList title='Users List App' />
     </div>
   );
 }
