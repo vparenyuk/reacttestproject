@@ -1,14 +1,39 @@
-type ResponseDataType = {
+type UserResponseDataType = ResponseDataType<UserResponseType[]>
+
+type ResponseDataType<T> = {
     page: number
-    perPage: number
+    per_page: number
     total: number
-    totalPages: number
-    data: Array<UserType>
+    total_pages: number
+    data: T
     support: {
         url: string
         text: string
     }
 }
+
+type UserResponseType = {
+    id: number
+    email: string
+    first_name: string
+    last_name: string
+    avatar: string
+}
+
+type UserDataType = DataType<UserType[]>
+
+type DataType<T> = {
+    page: number
+    perPage: number
+    total: number
+    totalPages: number
+    data: T
+    support: {
+        url: string
+        text: string
+    }
+}
+
 type UserType = {
     id: number
     email: string

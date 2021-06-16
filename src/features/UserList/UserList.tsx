@@ -25,7 +25,7 @@ export const UserList: React.FC<UserListProps> = ({title}) => {
 
     const classes = useStyles();
 
-    const {isLoading, data} = useQuery<ResponseDataType>("userList", getAllUsers);
+    const {isLoading, data} = useQuery<UserDataType>("userList", getAllUsers);
 
     if (isLoading) {
         return (
