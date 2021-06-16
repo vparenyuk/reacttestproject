@@ -8,6 +8,6 @@ const instance = axios.create({
 
 export const getAllUsers = async () => {
     const response = await instance.get<UserResponseDataType>('/users');
-    return camelcaseKeys({...response.data}, { deep: true }) as UserResponseType;
+    return camelcaseKeys({...response.data}, { deep: true }) as unknown as UserDataType;
 }
 
