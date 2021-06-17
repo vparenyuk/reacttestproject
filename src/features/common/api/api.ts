@@ -7,7 +7,7 @@ const instance = axios.create({
 
 // In this function we add "as unknown" after camelcaseKeys function for its typing.
 // In another case we can declare the types for the input and output data using separate camelcaseKeys function.
-export const getAllUsers = async () => {
+export const getAllUsers = async ():CamelCaseResponseDataType => {
     const response = await instance.get<UserResponseDataType>('/users');
     return camelcaseKeys({...response.data}, { deep: true }) as unknown as CamelCaseResponseDataType;
 }
