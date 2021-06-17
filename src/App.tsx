@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import {UserList} from "./features/UserList";
 
-function App() {
+function App(): React.ReactElement {
   return (
     <div>
       <UserList title='Users List App' />
