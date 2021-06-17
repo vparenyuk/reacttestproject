@@ -6,7 +6,7 @@ import {makeStyles} from '@material-ui/styles';
 type UserListProps = {
     title: string
 }
-const useStyles = makeStyles((theme: unknown) => ({
+const useStyles = makeStyles(() => ({
         root: {
             margin: 20,
         },
