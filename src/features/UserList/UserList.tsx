@@ -1,6 +1,6 @@
 import React from 'react';
 import {useQuery} from "react-query";
-import {getAllUsers } from '../common/api/api';
+import {getAllUsers} from '../common/api/api';
 import {makeStyles} from '@material-ui/styles';
 import {Pagination} from "@material-ui/lab";
 
@@ -34,13 +34,16 @@ export const UserList: React.FC<UserListProps> = ({title}) => {
 
     const [page, setPage] = React.useState<number>(1);
 
-    const { isLoading, data } = useQuery<CamelCaseResponseDataType>(['userList', page], ()=> getAllUsers(page), {keepPreviousData: true })
+    const {
+        isLoading,
+        data
+    } = useQuery<CamelCaseResponseDataType>(['userList', page], () => getAllUsers(page), {keepPreviousData: true})
 
     const handleChange = (event: unknown, value: number) => {
         setPage(value);
     };
 
-    const count = Math.ceil(data?.total / data?.perPage )
+    const count = Math.ceil(data?.total / data?.perPage)
 
     if (isLoading) {
         return (
@@ -60,7 +63,8 @@ export const UserList: React.FC<UserListProps> = ({title}) => {
         <div className={classes.root}>
             <div className={classes.title}>{title}</div>
             {userList}
-            <Pagination className={classes.pagination} count={count} color="primary" page={page} onChange={handleChange} />
+            <Pagination className={classes.pagination} count={count} color="primary" page={page}
+                        onChange={handleChange}/>
         </div>
     );
 };
