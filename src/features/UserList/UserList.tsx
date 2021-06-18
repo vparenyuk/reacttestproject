@@ -41,7 +41,7 @@ const UserList: React.FC<UserListProps> = ({ title }) => {
     setPage(value);
   };
 
-  const count = Math.ceil(data?.total / data?.perPage);
+  const count: number = Math.ceil((data?.total / data?.perPage);
 
   if (isLoading) {
     return (
