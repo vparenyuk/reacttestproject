@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useQuery} from "react-query";
 import {getAllUsers } from '../common/api/api';
 import {makeStyles} from '@material-ui/styles';
@@ -14,10 +14,16 @@ const useStyles = makeStyles(() => ({
         title: {
             fontWeight: 700,
             fontSize: 24,
+            paddingLeft: 10,
         },
         item: {
             listStyleType: "none",
             paddingTop: 10,
+            paddingLeft: 25,
+        },
+        pagination: {
+            paddingTop: 20,
+
         }
     }
 ));
@@ -26,28 +32,15 @@ export const UserList: React.FC<UserListProps> = ({title}) => {
 
     const classes = useStyles();
 
-    const [page, setPage] = React.useState(1);
+    const [page, setPage] = React.useState<number>(1);
 
-    //working variant
-    // const {isLoading, data} = useQuery<CamelCaseResponseDataType>("userList", getAllUsers);
-
-    //try this for pagination
-    const { isLoading, data } = useQuery(['userList', page], getAllUsers(page), {keepPreviousData: true })
-
-
+    const { isLoading, data } = useQuery<CamelCaseResponseDataType>(['userList', page], ()=> getAllUsers(page), {keepPreviousData: true })
 
     const handleChange = (event: unknown, value: number) => {
-         // console.log(event, value)
         setPage(value);
-        // getUsersByPage(value);
-        // useQuery(["paginatedUsers", page], getUsersByPage(value))
-        getAllUsers(value)
     };
 
-
-    const perPage = data?.perPage;
-    const total = data?.total;
-    const count = Math.ceil(total / perPage);
+    const count = Math.ceil(data?.total / data?.perPage )
 
     if (isLoading) {
         return (
@@ -67,7 +60,7 @@ export const UserList: React.FC<UserListProps> = ({title}) => {
         <div className={classes.root}>
             <div className={classes.title}>{title}</div>
             {userList}
-            <Pagination count={count} color="primary" page={page} onChange={handleChange} />
+            <Pagination className={classes.pagination} count={count} color="primary" page={page} onChange={handleChange} />
         </div>
     );
 };
