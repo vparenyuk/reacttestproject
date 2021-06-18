@@ -3,6 +3,7 @@ import { useQuery } from 'react-query';
 import { makeStyles } from '@material-ui/styles';
 import { Pagination } from '@material-ui/lab';
 import getAllUsers from '../common/api/api';
+import { calculateCount } from './utils';
 
 type UserListProps = {
   title: string
@@ -41,8 +42,6 @@ const UserList: React.FC<UserListProps> = ({ title }) => {
     setPage(value);
   };
 
-  const count: number = Math.ceil((data?.total / data?.perPage);
-
   if (isLoading) {
     return (
       <div>Loading...</div>
@@ -65,7 +64,7 @@ const UserList: React.FC<UserListProps> = ({ title }) => {
       {userList}
       <Pagination
         className={classes.pagination}
-        count={count}
+        count={calculateCount(data?.total, data?.perPage)}
         color="primary"
         page={page}
         onChange={handleChange}

@@ -8,6 +8,9 @@ module.exports = {
     parserOptions: {
         project: './tsconfig.json',
     },
+    rules: {
+        'import/prefer-default-export': 'off',
+    },
     env: {
         node: true,
         browser: true,
