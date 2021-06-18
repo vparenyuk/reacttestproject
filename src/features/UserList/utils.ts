@@ -2,6 +2,5 @@ export const calculateCount = (total: number | undefined, perPage: number | unde
   if (!total || !perPage) {
     return 0;
   }
-
   return Math.ceil(total / perPage);
 };
