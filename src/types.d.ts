@@ -41,3 +41,10 @@ type CamelCaseResponseUserType = {
   lastName: string
   avatar: string
 };
+
+type UserListProps = {
+  firstName: string,
+  lastName: string,
+  id: number,
+  avatar?: string,
+};

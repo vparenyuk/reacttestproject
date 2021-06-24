@@ -3,10 +3,12 @@ import { useQuery } from 'react-query';
 import { makeStyles } from '@material-ui/styles';
 import { Pagination } from '@material-ui/lab';
 import {
-  Card, FormControl, InputLabel, MenuItem, Select,
+  FormControl, InputLabel, MenuItem, Select,
 } from '@material-ui/core';
 import getAllUsers from '../common/api/api';
 import { calculateCount } from './utils';
+import { List } from './List/List';
+import { Tile } from './Tile/Tile';
 
 type UserListProps = {
   title: string
@@ -61,8 +63,7 @@ const UserList: React.FC<UserListProps> = ({ title }) => {
 
   const handleChangeSelect = (event: React.ChangeEvent<{ value: unknown }>) => {
     setView(event.target.value as string);
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    event.target.value === 'List' ? setChangeView(true) : setChangeView(false);
+    setChangeView(event.target.value === 'List');
   };
 
   const {
@@ -83,12 +84,22 @@ const UserList: React.FC<UserListProps> = ({ title }) => {
   const userList = data?.data?.map(({
     firstName, lastName, id, avatar,
   }: CamelCaseResponseUserType) => (
-    <div key={id} className={classes.cards}>
-      <Card className={classes.card}>
-        {`${firstName} ${lastName}`}
-        <img className={classes.cardImg} src={avatar} alt="#" width={40} height={40} />
-      </Card>
-    </div>
+    (changeView) ? (
+      <List
+        key={id}
+        firstName={firstName}
+        lastName={lastName}
+        id={id}
+      />
+    ) : (
+      <Tile
+        key={id}
+        firstName={firstName}
+        lastName={lastName}
+        id={id}
+        avatar={avatar}
+      />
+    )
   ));
 
   return (
@@ -113,6 +124,9 @@ const UserList: React.FC<UserListProps> = ({ title }) => {
       <div className={!changeView ? classes.userList : ''}>
         {userList}
       </div>
+      {/* <div> */}
+      {/*  {!changeView ? <List /> : <Tile />} */}
+      {/* </div> */}
       <Pagination
         className={classes.pagination}
         count={calculateCount(data?.total, data?.perPage)}
