@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
   cards: {
@@ -21,16 +22,29 @@ const useStyles = makeStyles(() => ({
 }
 ));
 
+// export const List = ({
+//   firstName, lastName, id,
+// }: UserListProps) => {
+//   const classes = useStyles();
+//
+//   return (
+//     <div key={id} className={classes.cards}>
+//       <Card className={classes.card}>
+//         {`${firstName} ${lastName}`}
+//       </Card>
+//     </div>
+//   );
+// };
 export const List = ({
   firstName, lastName, id,
 }: UserListProps) => {
   const classes = useStyles();
 
   return (
-    <div key={id} className={classes.cards}>
+    <Link key={id} className={classes.cards} to={`/user/${id}`}>
       <Card className={classes.card}>
         {`${firstName} ${lastName}`}
       </Card>
-    </div>
+    </Link>
   );
 };

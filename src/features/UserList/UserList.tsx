@@ -5,7 +5,7 @@ import { Pagination } from '@material-ui/lab';
 import {
   FormControl, InputLabel, MenuItem, Select,
 } from '@material-ui/core';
-import getAllUsers from '../common/api/api';
+import { getAllUsers } from '../common/api/api';
 import { calculateCount } from './utils';
 import { List } from './List/List';
 import { Tile } from './Tile/Tile';
@@ -124,9 +124,6 @@ const UserList: React.FC<UserListProps> = ({ title }) => {
       <div className={!changeView ? classes.userList : ''}>
         {userList}
       </div>
-      {/* <div> */}
-      {/*  {!changeView ? <List /> : <Tile />} */}
-      {/* </div> */}
       <Pagination
         className={classes.pagination}
         count={calculateCount(data?.total, data?.perPage)}
@@ -134,6 +131,7 @@ const UserList: React.FC<UserListProps> = ({ title }) => {
         page={page}
         onChange={handleChange}
       />
+
     </div>
   );
 };
