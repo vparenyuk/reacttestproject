@@ -1,4 +1,5 @@
 import React from 'react';
+import { BackButton } from '../../features/common/components/BackButton/BackButton';
 
 type UserDetailsProps = {
   data: CamelCaseResponseUserType
@@ -14,6 +15,7 @@ export const UserDetailsPage:React.FC<UserDetailsProps> = ({ data }: UserDetails
       <div>
         <img alt="#" src={avatar} height={200} width={200} />
       </div>
+      <BackButton />
     </div>
   );
 };
