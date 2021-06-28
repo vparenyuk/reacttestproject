@@ -16,8 +16,8 @@ Promise<CamelCaseResponseDataType> => {
     { deep: true }) as unknown as CamelCaseResponseDataType;
 };
 
-export const getUser = async (id: number): Promise<any> => {
-  const response = await instance.get<any>(`/users/${id}`);
+export const getUser = async (id: string | undefined): Promise<CamelCaseResponseUserType> => {
+  const response = await instance.get<UserResponseType>(`/users/${id}`);
   return camelcaseKeys({ ...response.data },
-    { deep: true }) as unknown as any;
+    { deep: true }) as unknown as CamelCaseResponseUserType;
 };

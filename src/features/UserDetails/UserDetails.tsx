@@ -5,7 +5,8 @@ import { getUser } from '../common/api/api';
 import { UserDetailsPage } from '../../page/UserDetailsPage/UserDetailsPage';
 
 export const UserDetails:React.FC = () => {
-  const { id }:any = useParams();
+  // check the correctness of typing id
+  const { id } = useParams<{ id?: string | undefined; }>();
 
   const { data, isLoading } = useQuery<any>(['singleUser'], () => getUser(id));
 

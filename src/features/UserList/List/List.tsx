@@ -22,19 +22,6 @@ const useStyles = makeStyles(() => ({
 }
 ));
 
-// export const List = ({
-//   firstName, lastName, id,
-// }: UserListProps) => {
-//   const classes = useStyles();
-//
-//   return (
-//     <div key={id} className={classes.cards}>
-//       <Card className={classes.card}>
-//         {`${firstName} ${lastName}`}
-//       </Card>
-//     </div>
-//   );
-// };
 export const List = ({
   firstName, lastName, id,
 }: UserListProps) => {
