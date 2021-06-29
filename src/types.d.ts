@@ -1,4 +1,5 @@
 type UserResponseDataType = ResponseDataType<UserResponseType[]>;
+type SingleUserResponseDataType = ResponseDataType<UserResponseType>;
 
 type ResponseDataType<T> = {
   page: number
@@ -21,6 +22,7 @@ type UserResponseType = {
 };
 
 type CamelCaseResponseDataType = ResponseCamelCaseDataType<CamelCaseResponseUserType[]>;
+type CamelCaseResponseUserDataType = ResponseCamelCaseDataType<CamelCaseResponseUserType>;
 
 type ResponseCamelCaseDataType<T> = {
   page: number
