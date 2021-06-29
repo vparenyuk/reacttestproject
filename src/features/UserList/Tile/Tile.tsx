@@ -1,10 +1,11 @@
 import React from 'react';
 import { Card } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
   cards: {
-
+    textDecoration: 'none',
   },
   card: {
     display: 'flex',
@@ -16,7 +17,9 @@ const useStyles = makeStyles(() => ({
     padding: 20,
     margin: 20,
     width: 250,
-
+    '&:hover': {
+      color: '#0000FF',
+    },
   },
   cardImg: {
     marginLeft: 20,
@@ -30,11 +33,11 @@ export const Tile = ({
   const classes = useStyles();
 
   return (
-    <div key={id} className={classes.cards}>
+    <Link key={id} className={classes.cards} to={`/user/${id}`}>
       <Card className={classes.card}>
         {`${firstName} ${lastName}`}
         <img className={classes.cardImg} src={avatar} alt="#" width={40} height={40} />
       </Card>
-    </div>
+    </Link>
   );
 };

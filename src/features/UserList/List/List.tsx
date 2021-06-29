@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
   cards: {
-
+    textDecoration: 'none',
   },
   card: {
     display: 'flex',
@@ -17,7 +17,9 @@ const useStyles = makeStyles(() => ({
     padding: 20,
     margin: 20,
     width: 150,
-
+    '&:hover': {
+      color: '#0000FF',
+    },
   },
 }
 ));
